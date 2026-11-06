@@ -1,0 +1,146 @@
+{
+  "tesserae_compat": "1.x",
+  "tesserae_min": "0.502.0",
+  "name": "Month Ahead",
+  "version": "0.1.0",
+  "kind": "widget",
+  "description": "A wall calendar for a whole panel: today up close (date, weather, plans, bin night) beside the next five weeks as tiles, each event edged in its calendar's colour. Five looks, portrait or landscape, muted colour or black and white.",
+  "icon": "ph-calendar-dots",
+  "category": "plans",
+  "supports": {
+    "sizes": [
+      "md",
+      "lg"
+    ]
+  },
+  "render": {
+    "full_bleed": true
+  },
+  "design": {
+    "palette": "extended"
+  },
+  "cell_options": [
+    {
+      "name": "theme",
+      "type": "select",
+      "label": "Look",
+      "default": "noir",
+      "choices": [
+        {"value": "noir", "label": "Noir: a dark today panel, soft tiles"},
+        {"value": "paper", "label": "Paper: a printed desk planner"},
+        {"value": "poster", "label": "Poster: heavy type, hard edges"},
+        {"value": "ledger", "label": "Ledger: monospaced, dotted rules"},
+        {"value": "soft", "label": "Soft: airy, light weights"}
+      ]
+    },
+    {
+      "name": "colour",
+      "type": "select",
+      "label": "Colour",
+      "default": "muted",
+      "choices": [
+        {"value": "muted", "label": "Muted colour, for colour panels"},
+        {"value": "mono", "label": "Black and white"}
+      ],
+      "help": "Muted colour dithers soft rust, slate, ochre and sage tones, and edges every event in its calendar's colour. Black and white suits greyscale panels."
+    },
+    {
+      "name": "sidebar",
+      "type": "boolean",
+      "label": "Today panel",
+      "default": true,
+      "help": "The big date, today's weather and the day's plans, beside the grid (above it on a portrait panel). Off gives the grid the whole cell and puts each day's weather in the corner of its tile."
+    },
+    {
+      "name": "location",
+      "type": "location_search",
+      "label": "Weather for",
+      "default": "",
+      "help": "Search a city, or paste a 'lat, lon' pair. Blank uses the app's own location; with neither, the calendar shows without weather."
+    },
+    {
+      "name": "units",
+      "type": "select",
+      "label": "Units",
+      "default": "metric",
+      "choices": [
+        {"value": "metric", "label": "Metric (°C)"},
+        {"value": "imperial", "label": "Imperial (°F)"}
+      ]
+    },
+    {
+      "name": "feeds_filter",
+      "type": "string",
+      "label": "Calendars",
+      "default": "",
+      "help": "Feed IDs, separated by commas. Blank shows every enabled calendar from Calendar Feeds."
+    },
+    {
+      "name": "weeks",
+      "type": "select",
+      "label": "Weeks shown",
+      "default": "5",
+      "choices": [
+        {"value": "4", "label": "4 weeks"},
+        {"value": "5", "label": "5 weeks"},
+        {"value": "6", "label": "6 weeks"}
+      ],
+      "help": "Starts at the week holding today and rolls forward."
+    },
+    {
+      "name": "week_start",
+      "type": "select",
+      "label": "Week starts on",
+      "default": "monday",
+      "choices": [
+        {"value": "sunday", "label": "Sunday"},
+        {"value": "monday", "label": "Monday"}
+      ]
+    },
+    {
+      "name": "max_events_per_day",
+      "type": "number",
+      "label": "Events per day",
+      "default": 4,
+      "advanced": true,
+      "help": "More than this shows as '+N more'."
+    },
+    {
+      "name": "bin_day",
+      "type": "select",
+      "label": "Bin night",
+      "default": "",
+      "choices": [
+        {"value": "", "label": "None"},
+        {"value": "1", "label": "Monday"},
+        {"value": "2", "label": "Tuesday"},
+        {"value": "3", "label": "Wednesday"},
+        {"value": "4", "label": "Thursday"},
+        {"value": "5", "label": "Friday"},
+        {"value": "6", "label": "Saturday"},
+        {"value": "0", "label": "Sunday"}
+      ],
+      "help": "Puts a bin on that day's tile, and a 'Bins out tonight' card in the today panel when it comes round."
+    },
+    {
+      "name": "recycling",
+      "type": "select",
+      "label": "Recycling",
+      "default": "fortnightly",
+      "help": "Only used when a bin night is set.",
+      "choices": [
+        {"value": "none", "label": "Not shown"},
+        {"value": "weekly", "label": "Every bin night"},
+        {"value": "fortnightly", "label": "Every other bin night"}
+      ]
+    },
+    {
+      "name": "recycling_from",
+      "type": "string",
+      "label": "A recycling night",
+      "default": "",
+      "show_if": {"recycling": "fortnightly"},
+      "help": "Any date recycling went out (2026-11-04), so the widget knows which fortnight. Blank counts from the first bin night shown."
+    }
+  ]
+}
